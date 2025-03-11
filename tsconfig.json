@@ -1,0 +1,66 @@
+{
+	"compilerOptions": {
+		/**************** 基础配置 ****************/
+		"baseUrl": ".", // 定相对路径的基准目录，. 代表当前项目根目录，通常用于 paths 配置。
+		"outDir": "temp", // 在此项目中，编译后的文件将放在此目录下。但是好像没有用过
+		"sourceMap": false, // 不生成 .map 源码映射文件（调试用）。如果需要调试 TypeScript 代码，建议改为 true。
+		"target": "es2016", // 目标 JavaScript 版本为 ES2016（即 ES7）。
+		"newLine": "LF", // 指定换行符为 LF（Unix 风格换行符）。
+
+		/**************** 模块与解析 ****************/
+		"module": "esnext", // 使用 ESNext 模块系统（即 import/export 语法）。
+		"moduleResolution": "bundler", // 采用 bundler 模块解析模式，适用于 Rollup、Vite 等现代打包工具。
+		"allowJs": true, // 允许 TypeScript 编译 .js 文件，适用于项目中包含 JavaScript 代码的情况。
+		"resolveJsonModule": true, // 允许导入 JSON 文件 import data from './data.json';
+		"isolatedModules": true, // 强制每个文件独立编译，适用于使用 esbuild、swc 等编译器的项目。
+
+		/**************** 严格性检查 ****************/
+		"strict": true, // 启用 TypeScript 的所有严格检查（等同于开启 noImplicitAny, strictNullChecks 等）。
+		"noUnusedLocals": true, // 编译时检测未使用的本地变量，避免冗余代码。
+		"skipLibCheck": true, // 跳过 .d.ts 声明文件的类型检查，加快编译速度。
+		"esModuleInterop": true, // 允许 CommonJS 和 ES 模块互操作，例如： import express from "express"; // 允许默认导入
+		"removeComments": false, // 编译后保留代码中的注释。
+
+		/**************** 装饰器支持 ****************/
+		"experimentalDecorators": true, // 允许使用实验性的 @decorator 语法
+
+		/**************** JSX支持 ****************/
+		"jsx": "preserve", // 保留 JSX 语法，适用于 React / Vue 等框架，交由 Babel 或 Vite 处理。
+
+		/**************** Class语法 ****************/
+		"useDefineForClassFields": false, // true 是最新的语法形式，false 是旧的语法形式
+
+		/**************** 库与类型 ****************/
+		/**
+		 * 指定 TypeScript 需要的标准库：
+		 * es2016：支持 ES2016 的所有 API（如 Array.prototype.includes）。
+		 * dom：包含浏览器 window、document 等 DOM API。
+		 */
+		"lib": ["es2016", "dom"],
+		/**
+		 * 指定 TypeScript 需要加载的类型：
+		 * vitest/globals：Vitest 测试框架的全局 API 类型支持。
+		 * puppeteer：Puppeteer 自动化测试的类型。
+		 * node：Node.js 内置 API 类型（如 fs, path）。
+		 */
+		"types": ["vitest/globals", "puppeteer", "node"],
+
+		/**************** 路径映射 ****************/
+		"rootDir": ".",
+		"paths": {
+			/**
+			 * import myLib from "@enableai/utils";
+			 * 这个别名会映射到 packages/utils/lib 目录。
+			 */
+			"@enableai/*": ["packages/*/lib"]
+		}
+	},
+	/** 指定 TypeScript 需要编译的文件或目录： */
+	"include": [
+		"packages/global.d.ts",
+		"packages/*/lib",
+		"packages/*/__tests__",
+		"scripts/*",
+		"rollup.*.js"
+	]
+}

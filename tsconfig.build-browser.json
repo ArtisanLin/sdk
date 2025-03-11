@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "stripInternal": true
+  },
+  "include": [
+    "packages/global.d.ts",
+    "packages/is-hotkey/src",
+    "packages/history-map/src",
+    "packages/s3/src",
+    "packages/history/src"
+  ]
+}
