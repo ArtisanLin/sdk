@@ -1,0 +1,29 @@
+{
+  "name": "math",
+  "version": "0.0.0",
+  "description": "图形学中的数学计算",
+  "author": "陈定涛 <xinchen111283@icloud.com>",
+  "homepage": "https://github.com/ArtisanLin/sdk#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmmirror.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtisanLin/sdk.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/math.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/ArtisanLin/sdk/issues"
+  }
+}
