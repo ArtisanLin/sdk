@@ -1,3 +1,4 @@
 # lerna 将会忽略 package.json 中的 workspaces 配置
 packages:
     - packages/*
+    - '!**/test/**'
